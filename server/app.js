@@ -1,12 +1,26 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var mongoose = require('mongoose');
 
-//mock database
-var database = [
-  {text: "hi, this is the first message"},
-  {text: "hi, this is the second message"},
-];
+
+//Set address and open connection to database
+mongoose.connect('mongodb://localhost/adddatabase');
+
+//See if our pending connection (mongoose.connection) was successful or not
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('database connected');
+});
+
+//create schema
+var messageSchema = mongoose.Schema({
+  text: String
+});
+
+//compile this schema into a MODEL
+var Message = mongoose.model('Message', messageSchema);
 
 
 var app = express();
@@ -19,13 +33,16 @@ app.use(express.static('client'));
 
 // ROUTES
 app.get('/api/messages', (req, res) => {
-  res.send(database);
+  Message.find({})
+  .then(resp => {
+    console.log(resp);
+    res.send(resp)
+  })
 });
 
 app.post('/api/messages', (req, res) => {
-  database.push({
-    text: req.body.text
-  })
+  var newMessage = new Message({text: req.body.text})
+  newMessage.save();
   res.send(`message received and saved:  ${req.body.text}`);
 });
 

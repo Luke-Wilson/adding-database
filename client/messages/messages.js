@@ -7,8 +7,8 @@ angular.module('my-app.messages', [])
     Messages.getMessages()
     .then(data => {
       $scope.messages = data;
-    })
-  }
+    });
+  };
 
   //get messages on initial load
   $scope.getMessages();
@@ -21,4 +21,4 @@ angular.module('my-app.messages', [])
       $scope.getMessages();
     });
   };
-})
+});

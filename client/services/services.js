@@ -3,7 +3,7 @@ angular.module('my-app.services', [])
   return {
     //sends a message to server
     sendMessage: (text) => {
-      var data = {text: text}
+      var data = {text: text};
       return $http({
         method: 'POST',
         url: '/api/messages',
@@ -11,7 +11,7 @@ angular.module('my-app.services', [])
       })
       .then(resp => {
         return resp.data;
-      })
+      });
     },
 
     //gets all messages from server
@@ -22,7 +22,7 @@ angular.module('my-app.services', [])
       })
       .then(resp => {
         return resp.data;
-      })
+      });
     }
-  }
-})
+  };
+});
