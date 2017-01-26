@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+</head>
+<body ng-app="my-app">
+  This is the index.html
+
+  <div ng-controller="messageController">
+    {{test}}
+    <form  ng-submit="sendMessage(text)">
+      <input type="text" ng-model="text" placeholder="enter your message here">
+      <input type="submit">
+    </form>
+
+  <div ng-repeat="message in messages">
+    {{message.text}}
+  </div>
+
+  </div>
+
+
+  <script src="./messages/messages.js"></script>
+  <script src="./services/services.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
