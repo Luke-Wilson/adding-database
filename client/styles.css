@@ -8,3 +8,12 @@ p {
   margin: 20px 0 20px 0;
   width: 250px;
 }
+
+input[type=submit] {
+  font-size: 18px;
+  padding: 5px 15px 5px 15px;
+  background-color: purple;
+  color: white;
+  border-radius: 10%;
+  border: none;
+}
