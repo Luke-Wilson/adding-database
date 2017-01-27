@@ -1,0 +1,10 @@
+p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.input-box {
+  font-size: 20px;
+  margin: 20px 0 20px 0;
+  width: 250px;
+}
