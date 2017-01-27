@@ -2,22 +2,23 @@
 <html>
 <head>
   <title></title>
+  <link rel="stylesheet" href="./styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
 </head>
 <body ng-app="my-app">
-  This is the index.html
+  <h1>Basic message app</h1>
 
   <div ng-controller="messageController">
-    {{test}}
+    {{feedback}}
     <form  ng-submit="sendMessage(text)">
-      <input type="text" ng-model="text" placeholder="enter your message here">
+      <input class="input-box" type="text" ng-model="text" placeholder="enter your message here">
       <input type="submit">
     </form>
 
-  <div ng-repeat="message in messages">
+  <p ng-repeat="message in messages">
     {{message.text}}
-  </div>
+  </p>
 
   </div>
 

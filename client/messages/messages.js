@@ -17,7 +17,7 @@ angular.module('my-app.messages', [])
   $scope.sendMessage = (text) => {
     Messages.sendMessage(text)
     .then(data => {
-      $scope.test = data;
+      $scope.feedback = data;
       $scope.getMessages();
     });
   };
