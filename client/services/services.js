@@ -21,6 +21,7 @@ angular.module('my-app.services', [])
         url: '/api/messages'
       })
       .then(resp => {
+        console.log(resp);
         return resp.data;
       })
     }

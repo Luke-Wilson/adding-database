@@ -1,13 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var Sequelize = require('sequelize');
 
-//mock database
-var database = [
-  {text: "hi, this is the first message"},
-  {text: "hi, this is the second message"},
-];
+//set up the connection to the existing database
+var db = new Sequelize('koala', 'root', 'pw');
 
+//define a model
+var Message = db.define('Message', {
+  text: Sequelize.STRING
+});
+
+db.sync();
 
 var app = express();
 
@@ -19,13 +23,15 @@ app.use(express.static('client'));
 
 // ROUTES
 app.get('/api/messages', (req, res) => {
-  res.send(database);
+  Message.findAll({})
+    .then( messages => {
+      res.send(messages);
+    });
 });
 
 app.post('/api/messages', (req, res) => {
-  database.push({
-    text: req.body.text
-  })
+  var newMessage = Message.build({text: req.body.text});
+  newMessage.save();
   res.send(`message received and saved:  ${req.body.text}`);
 });
 

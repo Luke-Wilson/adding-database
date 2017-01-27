@@ -6,6 +6,9 @@ angular.module('my-app.messages', [])
   $scope.getMessages = () => {
     Messages.getMessages()
     .then(data => {
+      console.log('----------');
+      console.log(data)
+      console.log('----------');
       $scope.messages = data;
     })
   }
